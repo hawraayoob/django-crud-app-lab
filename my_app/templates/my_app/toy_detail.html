@@ -1,0 +1,26 @@
+{% extends 'my_app/base.html' %}
+
+{% block title %}{{ toy.name }} - Toy Details{% endblock %}
+
+{% block content %}
+<div class="animal-detail">
+  <h1><i class="fas fa-gamepad"></i> {{ toy.name }}</h1>
+  <p><strong>Color:</strong> {{ toy.color }}</p>
+  <p><strong>Animal:</strong> <a href="{% url 'animal_detail' toy.animal.pk %}">{{ toy.animal.name }}</a></p>
+  {% if toy.description %}
+    <p><strong>Description:</strong> {{ toy.description }}</p>
+  {% endif %}
+
+  <div class="btn-group" style="margin-top: 2rem;">
+    <a href="{% url 'toy_update' toy.pk %}" class="btn">
+      <i class="fas fa-edit"></i> Edit Toy
+    </a>
+    <a href="{% url 'toy_delete' toy.pk %}" class="btn btn-danger">
+      <i class="fas fa-trash"></i> Delete Toy
+    </a>
+    <a href="{% url 'toy_index' %}" class="btn" style="background: linear-gradient(135deg, #28a745, #20c997);">
+      <i class="fas fa-arrow-left"></i> Back to Toys
+    </a>
+  </div>
+</div>
+{% endblock %}

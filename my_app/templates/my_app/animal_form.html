@@ -1,0 +1,26 @@
+{% extends 'my_app/base.html' %}
+
+{% block title %}{% if form.instance.pk %}Edit Animal{% else %}Add New Animal{% endif %} - Animal Tracker{% endblock %}
+
+{% block content %}
+<div class="form-container">
+  <h1>
+    <i class="fas fa-paw"></i> 
+    {% if form.instance.pk %}Edit Animal{% else %}Add New Animal{% endif %}
+  </h1>
+  
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    
+    <div class="btn-group">
+      <button type="submit" class="btn">
+        <i class="fas fa-save"></i> Save Animal
+      </button>
+      <a href="{% url 'animal_index' %}" class="btn" style="background: linear-gradient(135deg, #6c757d, #495057);">
+        <i class="fas fa-times"></i> Cancel
+      </a>
+    </div>
+  </form>
+</div>
+{% endblock %}

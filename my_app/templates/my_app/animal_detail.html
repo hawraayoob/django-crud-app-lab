@@ -1,0 +1,33 @@
+{% extends 'my_app/base.html' %}
+
+{% block title %}{{ animal.name }} - Animal Details{% endblock %}
+
+{% block content %}
+<div class="animal-detail">
+  <h1><i class="fas fa-paw"></i> {{ animal.name }}</h1>
+  <p><strong>Species:</strong> {{ animal.species }}</p>
+  <p><strong>Age:</strong> {{ animal.age }}</p>
+  {% if animal.description %}
+    <p><strong>Description:</strong> {{ animal.description }}</p>
+  {% endif %}
+  <p><strong>Owner:</strong> {{ animal.owner.username }}</p>
+
+  <div class="btn-group">
+    <a href="{% url 'animal_update' animal.pk %}" class="btn">
+      <i class="fas fa-edit"></i> Edit Animal
+    </a>
+    <form method="post" action="{% url 'animal_delete' animal.pk %}" style="display: inline;">
+      {% csrf_token %}
+      <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete {{ animal.name }}?')">
+        <i class="fas fa-trash"></i> Delete Animal
+      </button>
+    </form>
+  </div>
+  
+  <div style="margin-top: 2rem;">
+    <a href="{% url 'animal_index' %}" class="btn" style="background: linear-gradient(135deg, #28a745, #20c997);">
+      <i class="fas fa-arrow-left"></i> Back to Animals
+    </a>
+  </div>
+</div>
+{% endblock %}

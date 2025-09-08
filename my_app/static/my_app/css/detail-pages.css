@@ -1,0 +1,91 @@
+/* General container for all detail pages */
+.detail-container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+    background-color: #fff;
+    font-family: 'Times New Roman', serif;
+}
+
+.detail-container h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.detail-container h2 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    color: #444;
+}
+
+.detail-container p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 12px;
+    color: #333;
+}
+
+/* Link styling */
+.detail-container a {
+    color: #1e90ff;
+    text-decoration: none;
+}
+
+.detail-container a:hover {
+    text-decoration: underline;
+}
+
+/* Specific styling for images (Animals/Toys) */
+.detail-img {
+    width: 100%;
+    max-width: 300px;
+    display: block;
+    margin: 0 auto 20px auto;
+    border-radius: 10px;
+}
+
+/* List of animals in Habitat */
+.habitat-animals {
+    list-style: disc;
+    padding-left: 20px;
+}
+
+.habitat-animals li {
+    margin-bottom: 8px;
+}
+
+/* Buttons or back links */
+.detail-container .btn-back {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 8px 18px;
+    background-color: #1e90ff;
+    color: #fff;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.detail-container .btn-back:hover {
+    background-color: #0f63c2;
+}
+
+/* Responsive design */
+@media only screen and (min-width: 768px) {
+    .detail-container {
+        display: flex;
+        flex-direction: row;
+        gap: 30px;
+        align-items: flex-start;
+    }
+
+    .detail-img {
+        margin: 0;
+    }
+
+    .detail-text {
+        flex: 1;
+    }
+}

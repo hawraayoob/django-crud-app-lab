@@ -1,0 +1,30 @@
+{% extends 'my_app/base.html' %}
+
+{% block title %}Delete {{ animal.name }} - Animal Tracker{% endblock %}
+
+{% block content %}
+<div class="form-container">
+  <h1><i class="fas fa-exclamation-triangle"></i> Delete {{ animal.name }}?</h1>
+  <p>Are you sure you want to delete this animal? This action cannot be undone.</p>
+  
+  <div style="background: #f8f9fa; padding: 1rem; border-radius: 10px; margin: 1rem 0;">
+    <p><strong>Species:</strong> {{ animal.species }}</p>
+    <p><strong>Age:</strong> {{ animal.age }}</p>
+    {% if animal.description %}
+      <p><strong>Description:</strong> {{ animal.description }}</p>
+    {% endif %}
+  </div>
+  
+  <form method="post">
+    {% csrf_token %}
+    <div class="btn-group">
+      <button type="submit" class="btn btn-danger">
+        <i class="fas fa-trash"></i> Yes, Delete Animal
+      </button>
+      <a href="{% url 'animal_index' %}" class="btn" style="background: linear-gradient(135deg, #6c757d, #495057);">
+        <i class="fas fa-times"></i> Cancel
+      </a>
+    </div>
+  </form>
+</div>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'my_app/base.html' %}
+
+{% block title %}Welcome - Animal Tracker{% endblock %}
+
+{% block content %}
+<div class="welcome-section">
+  <h1><i class="fas fa-paw"></i> Welcome to Animal Tracker</h1>
+  <p>Your comprehensive platform for managing animals, toys, and habitats</p>
+  
+  <div class="welcome-links">
+    <a href="{% url 'animal_index' %}">
+      <i class="fas fa-paw"></i> My Animals
+    </a>
+    <a href="{% url 'toy_index' %}">
+      <i class="fas fa-gamepad"></i> My Toys
+    </a>
+    <a href="{% url 'habitat_index' %}">
+      <i class="fas fa-tree"></i> Habitats
+    </a>
+  </div>
+</div>
+{% endblock %}

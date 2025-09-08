@@ -1,0 +1,43 @@
+{% extends 'my_app/base.html' %}
+
+{% block title %}{{ habitat.name }} - Habitat Details{% endblock %}
+
+{% block content %}
+<div class="animal-detail">
+  <h1><i class="fas fa-tree"></i> {{ habitat.name }}</h1>
+  {% if habitat.description %}
+    <p><strong>Description:</strong> {{ habitat.description }}</p>
+  {% endif %}
+  
+  <h2><i class="fas fa-paw"></i> Animals in this Habitat:</h2>
+  {% if habitat.animals.all %}
+    <div class="card-container" style="margin-top: 1rem;">
+      {% for animal in habitat.animals.all %}
+        <div class="card">
+          <a href="{% url 'animal_detail' animal.pk %}">
+            <div class="card-content">
+              <h3 class="card-title"><i class="fas fa-paw"></i> {{ animal.name }}</h3>
+              <p><strong>Species:</strong> {{ animal.species }}</p>
+              <p><strong>Age:</strong> {{ animal.age }}</p>
+            </div>
+          </a>
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <p>No animals assigned to this habitat yet.</p>
+  {% endif %}
+
+  <div class="btn-group" style="margin-top: 2rem;">
+    <a href="{% url 'habitat_update' habitat.pk %}" class="btn">
+      <i class="fas fa-edit"></i> Edit Habitat
+    </a>
+    <a href="{% url 'habitat_delete' habitat.pk %}" class="btn btn-danger">
+      <i class="fas fa-trash"></i> Delete Habitat
+    </a>
+    <a href="{% url 'habitat_index' %}" class="btn" style="background: linear-gradient(135deg, #28a745, #20c997);">
+      <i class="fas fa-arrow-left"></i> Back to Habitats
+    </a>
+  </div>
+</div>
+{% endblock %}
