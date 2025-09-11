@@ -1,3 +1,4 @@
+import os
 """
 Django settings for crudapp project.
 
@@ -25,7 +26,11 @@ SECRET_KEY = 'django-insecure-s^75hgzxcl6i(-+i&7)f94%vcuzgtcj@=-sj9s%fefb80%6sp+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "localhost",
+    "127.0.0.1",
+    os.getenv("RENDER_EXTERNAL_HOSTNAME", ""),  # Render auto-sets this
+]
 
 
 # Application definition
