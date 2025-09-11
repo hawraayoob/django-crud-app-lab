@@ -1,0 +1,6 @@
+Django==5.2.6
+gunicorn          # WSGI HTTP server for production
+dj-database-url   # Parse database URL env vars (Heroku/Render)
+psycopg2-binary   # PostgreSQL driver (use if deploying with Postgres)
+whitenoise[brotli]  # For serving static files in production
+python-dotenv     # Load environment variables from a .env file
